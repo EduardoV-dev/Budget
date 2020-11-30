@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import BudgetForm from './Components/BudgetForm';
+import Expenses from './Components/Expenses';
 
 function App() {
+
+  const [statedBudget, setStatedBudget] = useState(0);
+  const [remaining, setRemaining] = useState(0);
+
+  useEffect(() => {
+    setRemaining(statedBudget);
+  }, [statedBudget]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header>
+        <h1 className="text-white">Gasto Semanal</h1>
       </header>
+      <div className="contenido-principal contenido">
+        {statedBudget === 0 
+        ? (<BudgetForm 
+            setStatedBudget={setStatedBudget}
+          />)
+        : (<Expenses 
+            statedBudget={statedBudget}
+            remaining={remaining}
+            setRemaining={setRemaining}
+          />)}
+      </div>
     </div>
   );
 }
