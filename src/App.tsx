@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import BudgetForm from './Components/BudgetForm';
 import Expenses from './Components/Expenses';
 
-function App() {
+const App: React.FC = () =>  {
 
-  const [statedBudget, setStatedBudget] = useState(0);
-  const [remaining, setRemaining] = useState(0);
+  const [statedBudget, setStatedBudget] = useState<number>(0);
+  const [remaining, setRemaining] = useState<number>(0);
 
-  useEffect(() => {
+  useEffect((): void => {
     setRemaining(statedBudget);
   }, [statedBudget]);
 

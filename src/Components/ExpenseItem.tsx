@@ -1,9 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const ExpenseItem = ({ spending }) => {
+interface Spending {
+    name: string;
+    expense: number;
+}
 
-    const {name, expense} = spending;
+interface Props {
+    spending: Spending;
+}
+
+const ExpenseItem: React.FC<Props> = ({ spending }) => {
+
+    const { name, expense } = spending;
 
     return (
         <li className="gastos">
@@ -14,10 +22,6 @@ const ExpenseItem = ({ spending }) => {
             </p>
         </li>
     );
-}
-
-ExpenseItem.propTypes = {
-    spending: PropTypes.object.isRequired
 }
 
 export default ExpenseItem;

@@ -1,5 +1,5 @@
-const setAlertColor = (budget, remaining) => {
-    let className = '';
+const setAlertColor = (budget: number, remaining: number): string => {
+    let className: string = '';
 
     if (remaining <= (budget / 4)) {
         className = 'alert alert-danger px-3 py-2';

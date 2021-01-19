@@ -1,9 +1,15 @@
 import React from 'react';
+import { Spending } from '../interfaces';
 import ExpenseItem from './ExpenseItem';
 import { setAlertColor } from '../helpers';
-import PropTypes from 'prop-types';
 
-const ExpenseList = ({ statedBudget, remaining, expense }) => {
+interface Props {
+    statedBudget: number;
+    remaining: number;
+    expense: Spending[];
+}
+
+const ExpenseList: React.FC<Props> = ({ statedBudget, remaining, expense }) => {
 
     return (
         <div className="gastos-realizados">
@@ -11,7 +17,7 @@ const ExpenseList = ({ statedBudget, remaining, expense }) => {
 
             {expense.length === 0
                 ? null
-                : expense.map(spending => (
+                : expense.map((spending: Spending) => (
                     <ExpenseItem
                         key={spending.id}
                         spending={spending}
@@ -26,12 +32,6 @@ const ExpenseList = ({ statedBudget, remaining, expense }) => {
             </p>
         </div>
     );
-}
-
-ExpenseList.propTypes = {
-    statedBudget: PropTypes.number.isRequired,
-    remaining: PropTypes.number.isRequired,
-    expense: PropTypes.array.isRequired
 }
 
 export default ExpenseList;

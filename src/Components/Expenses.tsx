@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { Spending } from '../interfaces';
 import ExpensesForm from './ExpensesForm';
 import ExpenseList from './ExpenseList';
 import PropTypes from 'prop-types';
 
-const Expenses = ({ statedBudget, remaining, setRemaining }) => {
+interface Props {
+    statedBudget: number;
+    remaining: number;
+    setRemaining: React.Dispatch<React.SetStateAction<number>>
+}
 
-    const [expense, setExpense] = useState([]);
+const Expenses: React.FC<Props> = ({ statedBudget, remaining, setRemaining }) => {
+
+    const [expense, setExpense] = useState<Spending[]>([]);
 
     // Adds to the expense state a new expense
-    const addNewExpense = spending => {
+    const addNewExpense = (spending: Spending): void => {
         setExpense([...expense, spending]);
     }
 

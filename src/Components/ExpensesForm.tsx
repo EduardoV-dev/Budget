@@ -1,28 +1,33 @@
 import React, { Fragment, useState } from 'react';
+import { Spending } from '../interfaces';
 import Error from './Error';
 import uniqid from 'uniqid';
 import PropTypes from  'prop-types';
 
-const ExpensesForm = ({ addNewExpense }) => {
+interface Props {
+    addNewExpense: (spending: Spending) => void;
+}
 
-    const [spending, setSpending] = useState({
+const ExpensesForm: React.FC<Props> = ({ addNewExpense }) => {
+    const [spending, setSpending] = useState<Spending>({
         name: '',
         expense: 0
     });
+
     const [error, setError] = useState(false);
     const { name, expense } = spending;
 
     // Adds input values into the state hook
-    const addExpense = e => {
+    const addExpense = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.name === 'expense') setSpending({ ...spending, [e.target.name]: parseInt(e.target.value) });
         else setSpending({ ...spending, [e.target.name]: e.target.value });
     }
 
     // Adds a new concept for spending when submit
-    const addExpending = e => {
+    const addExpending = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (name === '' || !isNaN(name) || expense < 1 || isNaN(expense)) {
+        if (name === '' || expense < 1 || isNaN(expense)) {
             setError(true);
             return;
         }
@@ -45,7 +50,7 @@ const ExpensesForm = ({ addNewExpense }) => {
 
             {error
                 ? (<Error
-                    mensaje="Los campos son obligatorios. El nombre no puede ser sólo números. El presupuesto debe ser mayor a 0"
+                    message="Los campos son obligatorios. El nombre no puede ser sólo números. El presupuesto debe ser mayor a 0"
                 />)
                 : null}
 
