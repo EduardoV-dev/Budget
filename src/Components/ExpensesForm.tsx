@@ -66,7 +66,8 @@ const ExpensesForm: React.FC<Props> = ({ addNewExpense }) => {
                         name="name"
                         value={name}
                         onChange={addExpense}
-                    />
+                        data-testid='expensesform-name'
+                        />
                 </div>
                 <div className="form-group">
                     <label className="font-weight-bold">Cantidad Gasto</label>
@@ -77,12 +78,14 @@ const ExpensesForm: React.FC<Props> = ({ addNewExpense }) => {
                         name="expense"
                         value={expense}
                         onChange={addExpense}
-                    />
+                        data-testid='expensesform-expense'
+                        />
                 </div>
                 <div className="form-group mt-4">
                     <button
                         type="submit"
                         className="btn btn-primary btn-block"
+                        data-testid='expensesform-submit'
                     >Agregar Gasto</button>
                 </div>
             </form>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BudgetForm from './Components/BudgetForm';
 import Expenses from './Components/Expenses';
 
-const App: React.FC = () =>  {
+const App: React.FC = () => {
 
   const [statedBudget, setStatedBudget] = useState<number>(0);
   const [remaining, setRemaining] = useState<number>(0);
@@ -14,14 +14,14 @@ const App: React.FC = () =>  {
   return (
     <div className="container">
       <header>
-        <h1 className="text-white">Gasto Semanal</h1>
+        <h1 className="text-white" data-testid='app-heading'>Gasto Semanal</h1>
       </header>
       <div className="contenido-principal contenido">
-        {statedBudget === 0 
-        ? (<BudgetForm 
+        {statedBudget === 0
+          ? (<BudgetForm
             setStatedBudget={setStatedBudget}
           />)
-        : (<Expenses 
+          : (<Expenses
             statedBudget={statedBudget}
             remaining={remaining}
             setRemaining={setRemaining}

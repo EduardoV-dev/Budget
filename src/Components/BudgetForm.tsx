@@ -7,7 +7,7 @@ interface Props {
 }
 
 const BudgetForm: React.FC<Props> = ({ setStatedBudget }) => {
-	const [budget, setBudget] = useState<number>(0)
+	const [budget, setBudget] = useState<number>(0);
 	const [error, setError] = useState<boolean>(false);
 
 	const addBudget = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,15 +24,13 @@ const BudgetForm: React.FC<Props> = ({ setStatedBudget }) => {
 		}
 
 		setError(false);
-
 		setStatedBudget(budget);
-
 		setBudget(0);
 	}
 
 	return (
 		<Fragment>
-			<h2>Coloca tu presupuesto</h2>
+			<h2 data-testid='budgetform-title'>Coloca tu presupuesto</h2>
 
 			{error
 				? (
@@ -51,12 +49,14 @@ const BudgetForm: React.FC<Props> = ({ setStatedBudget }) => {
 						placeholder="Coloca tu presupuesto"
 						onChange={addBudget}
 						value={budget}
+						data-testid='budgetform-budget'
 					/>
 				</div>
 				<div className="form-group">
 					<button
 						type="submit"
 						className="form-control btn btn-primary btn-block"
+						data-testid='budgetform-submit'
 					>Definir Presupuesto</button>
 				</div>
 			</form>

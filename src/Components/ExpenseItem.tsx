@@ -14,7 +14,7 @@ const ExpenseItem: React.FC<Props> = ({ spending }) => {
     const { name, expense } = spending;
 
     return (
-        <li className="gastos">
+        <li className="gastos" data-testid='expenseitem'>
             <p>
                 {name}
 

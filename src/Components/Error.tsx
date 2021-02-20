@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Error: React.FC<Props> = ({ message }) => (
-    <p className="alert alert-danger error">{message}</p>
+    <p className="alert alert-danger error" data-testid='error-alert'>{message}</p>
 );
 
 Error.propTypes = {
